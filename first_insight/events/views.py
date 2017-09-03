@@ -17,7 +17,11 @@ from rest_framework.views import APIView
 from selenium import webdriver
 import json
 
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
+
+@api_view()
 def events(request):
     ik = []
     title = []
@@ -26,7 +30,7 @@ def events(request):
     author = []
     datetime = []
     kk = 0
-    driver = webdriver.Chrome("/home/amank/Development/insight_api/chromedriver")
+    driver = webdriver.PhantomJS()
     driver.get("http://otakukart.com/animeblog/")
     html_source = driver.page_source
     soup = BeautifulSoup(html_source, "lxml")
@@ -46,18 +50,4 @@ def events(request):
         total.append(
             {"title": title[i], "url": link[i], "img_url": img[i], "author": author[i], "datetime": datetime[i]})
 
-    str_json = str(total)
-    str_dict_json = str_json
-    s=str_dict_json.replace("'", '"')
-
-    return HttpResponse(s)
-
-
-
-
-
-
-
-
-
-
+    return Response(total)
