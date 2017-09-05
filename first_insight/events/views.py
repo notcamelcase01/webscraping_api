@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from bs4 import BeautifulSoup
 from django.http import HttpResponse
-import urllib.request
+
 
 from django.views.decorators.csrf import csrf_exempt
 
