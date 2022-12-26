@@ -13,4 +13,4 @@ requests==2.18.4
 selenium==3.5.0
 urllib3==1.22
 urlopen==1.0.0
-wheel==0.29.0
+wheel==0.38.1
